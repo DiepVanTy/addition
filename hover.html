@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Addition </title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            min-height: 40vh;
+            width: 70vw;
+            background: lightblue;
+            padding: 20px;
+            border-radius: 20px 0;
+            position: relative;
+        }
+
+        .question {
+            font-size: 2em;
+            border: 2px solid white;
+            padding: 10px;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .answer {
+            padding-top: 50px;
+            position: absolute;
+            bottom: 10px;
+            top: 130px;
+            left: 20px;
+            right: 20px;
+        }
+
+        button {
+            padding: 8px;
+            width: calc(90%/4);
+            border: none;
+            border-radius: 10px 0;
+            font-size: 20px;
+            background-color: mediumseagreen;
+            color: white;
+
+        }
+
+        button+button {
+            margin-left: 25px;
+        }
+
+        #move {
+            position: absolute;
+            top: 50px;
+            right: 0;
+            transition: .3s;
+
+        }
+
+        #move.run1 {
+            top: 100px;
+            right: 400px;
+        }
+
+        #move.run2 {
+            top: 270px;
+            right: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="question">
+            <p>Choose your answer</p>
+            <p> 1 + 1 = ? </p>
+        </div>
+        <div class="answer">
+            <button>B. 3</button>
+            <button>C. 4</button>
+            <button id="move">A. 2</button>
+            <button>D. 5</button>
+        </div>
+    </div>
+    <script>
+        const move = document.getElementById('move');
+        move.addEventListener('mouseover', function () {
+            if (move.className == '') {
+                move.classList.add('run1');
+                move.innerHTML = 'A. 2'
+            }
+            else if (move.className == 'run1') {
+                move.classList.add('run2');
+                // console.log(move.classList);
+            }
+            else if (move.className == 'run1 run2') {
+                move.classList.remove('run1');
+                move.classList.remove('run2');
+                move.innerHTML = 'sai rầu!'
+            }
+        })
+    </script>
+</body>
+
+</html>
